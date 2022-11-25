@@ -21,7 +21,12 @@ const NumberInput = () => {
         let countriesList = []
         // fetch as many countires times as user defined
         for (let i = 0; i < inputNumber; i++) {
-            countriesList.push(await fetchCoutryName())
+            let randomCountry = await fetchCoutryName()
+            //prevent repeated countries
+            while (countriesList.includes(randomCountry)) {
+                randomCountry = await fetchCoutryName()
+            }
+            countriesList.push(randomCountry)
         }
         setCountries(countriesList)
     }
@@ -34,7 +39,11 @@ const NumberInput = () => {
     return (
         <div className="numberInput">
             <form onSubmit={handleSubmit}>
-                <input type="number" value={inputNumber} onChange={(e) => setInputNumber(e.target.value)} />
+                <input
+                    type="number"
+                    value={inputNumber}
+                    onChange={(e) => setInputNumber(e.target.value.replace(/\D/, ''))}
+                />
                 <button disabled={isOutOfRange}>GET COUNTRIES</button>
             </form>
         </div>
