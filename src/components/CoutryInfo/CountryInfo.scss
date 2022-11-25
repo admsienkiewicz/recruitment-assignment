@@ -3,4 +3,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: solid 1px blue;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+
+    &__name {
+        text-transform: uppercase;
+    }
+
+    &__details {
+        display: flex;
+        justify-content: left;
+        align-items: flex-start;
+        border: solid 1px red;
+        width: 100%;
+
+        &--capital,
+        &--languages,
+        &--population {
+            border: solid 1px green;
+            display: flex;
+            width: 33%;
+            gap: 5px;
+        }
+    }
 }
