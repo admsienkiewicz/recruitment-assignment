@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { CountriesContext } from '../../context/CountriesContext'
+import './NumberInput.scss'
 
 const NumberInput = () => {
     const [inputNumber, setInputNumber] = useState(5)
     const [isOutOfRange, setIsOutOfRange] = useState(false)
-    const { setCountries } = useContext(CountriesContext)
+    const { setCountries, setIsLoading } = useContext(CountriesContext)
 
     const fetchCoutryName = async () => {
         try {
@@ -18,6 +19,7 @@ const NumberInput = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
         let countriesList = []
         // fetch as many countires times as user defined
         for (let i = 0; i < inputNumber; i++) {
@@ -39,13 +41,12 @@ const NumberInput = () => {
     return (
         <div className="numberInput">
             <form onSubmit={handleSubmit}>
-                <input
-                    type="number"
-                    value={inputNumber}
-                    onChange={(e) => setInputNumber(e.target.value.replace(/\D/, ''))}
-                />
-                <button disabled={isOutOfRange}>GET COUNTRIES</button>
+                <input type="number" value={inputNumber} onChange={(e) => setInputNumber(e.target.value)} />
+                <button disabled={isOutOfRange} className={isOutOfRange && 'disabled'}>
+                    GET COUNTRIES
+                </button>
             </form>
+            {isOutOfRange && <p>Input value should be number in range 5..20</p>}
         </div>
     )
 }

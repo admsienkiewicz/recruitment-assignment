@@ -1,0 +1,46 @@
+.numberInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    form {
+        display: flex;
+        gap: 5px;
+        input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+        }
+
+        button {
+            height: 30px;
+            padding: 5px;
+            background: #464bff;
+            border: 0;
+            border-radius: 0.2rem;
+            color: #fff;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #fff;
+                color: #464bff;
+            }
+
+            &.disabled {
+                background-color: rgba(255, 255, 255, 0.484);
+                &:hover {
+                    cursor: default;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    p {
+        background-color: red;
+        font-size: 0.8rem;
+        padding: 2px;
+        border-radius: 0.2rem;
+    }
+}

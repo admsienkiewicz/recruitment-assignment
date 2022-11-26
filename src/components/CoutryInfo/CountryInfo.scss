@@ -3,28 +3,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 1px blue;
+    border-radius: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.061);
+    color: #fff;
     padding: 0.3rem;
     margin-bottom: 1rem;
 
     &__name {
         text-transform: uppercase;
+        text-align: center;
     }
 
     &__details {
         display: flex;
         justify-content: left;
         align-items: flex-start;
-        border: solid 1px red;
         width: 100%;
+        margin-top: 10px;
 
         &--capital,
         &--languages,
         &--population {
-            border: solid 1px green;
             display: flex;
+            justify-content: center;
             width: 33%;
             gap: 5px;
         }
     }
+}
+
+.icon:hover {
+    cursor: pointer;
 }

@@ -1,6 +1,15 @@
 .coutries-list {
-    border: solid 1px red;
     width: 50vw;
     min-width: 400px;
     padding: 1rem;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.745);
+    margin-bottom: 8px;
+}
+
+.loading {
+    position: relative;
+    left: 50%;
 }

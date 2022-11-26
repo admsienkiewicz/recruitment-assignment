@@ -3,11 +3,11 @@ import { CountriesContext } from '../../context/CountriesContext'
 import axios from 'axios'
 import CountryInfo from '../CoutryInfo/CountryInfo'
 import './CountriesList.scss'
+import ReactLoading from 'react-loading'
 
 const CountriesList = () => {
-    const { countries } = useContext(CountriesContext)
+    const { countries, isLoading, setIsLoading } = useContext(CountriesContext)
     const [countriesDetails, setCountriesDetails] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
 
     const fetchDetails = async (countryName) => {
         try {
@@ -21,7 +21,6 @@ const CountriesList = () => {
     }
     useEffect(() => {
         async function getDetailsArray() {
-            setIsLoading(true)
             let detailsArray = []
             for (let countryName of countries) {
                 detailsArray.push(await fetchDetails(countryName))
@@ -35,9 +34,18 @@ const CountriesList = () => {
     }, [countries])
     return (
         <div className="coutries-list">
-            {countriesDetails.map((countryDetailInfo, id) => (
-                <CountryInfo key={id} countryDetailsInfo={countryDetailInfo} />
-            ))}
+            {isLoading ? (
+                <ReactLoading type="spin" color="#fff" className="loading"></ReactLoading>
+            ) : (
+                <>
+                    {countries.length > 0 && (
+                        <p>Your random countries are: {countries.toString().replaceAll(',', ', ')}</p>
+                    )}
+                    {countriesDetails.map((countryDetailInfo, id) => (
+                        <CountryInfo key={id} countryDetailsInfo={countryDetailInfo} />
+                    ))}
+                </>
+            )}
         </div>
     )
 }
