@@ -1,6 +1,6 @@
 # 2022 - Fall - Internship Recruitment - Home Assignment
 
-This is my solution for given assigment which goal was to create UI app fetching data from two diffrent apis and displaying user information about given number of countries
+This is my solution for given assigment which goal was to create UI app fetching data from two diffrent apis and displaying to user information about given number of countries
 
 ## Clone Repo
 
