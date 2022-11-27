@@ -42,7 +42,7 @@ const NumberInput = () => {
         <div className="numberInput">
             <form onSubmit={handleSubmit}>
                 <input type="number" value={inputNumber} onChange={(e) => setInputNumber(+e.target.value)} />
-                <button disabled={isOutOfRange} className={isOutOfRange && 'disabled'}>
+                <button disabled={isOutOfRange} className={isOutOfRange ? 'disabled' : ''}>
                     GET COUNTRIES
                 </button>
             </form>

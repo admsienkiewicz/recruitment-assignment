@@ -29,7 +29,7 @@ const CountryInfo = ({ countryDetailsInfo }) => {
                             <ReactTooltip />
                             <div>
                                 {Object.values(languages).map((lang, id) => (
-                                    <p>{lang}</p>
+                                    <p key={id}>{lang}</p>
                                 ))}
                             </div>
                         </div>
