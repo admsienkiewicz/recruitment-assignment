@@ -35,18 +35,18 @@ const NumberInput = () => {
 
     useEffect(() => {
         //number validation
-        if (inputNumber > 20 || inputNumber < 5) setIsOutOfRange(true)
+        if (inputNumber > 20 || inputNumber < 5 || !Number.isInteger(inputNumber)) setIsOutOfRange(true)
         else setIsOutOfRange(false)
     }, [inputNumber])
     return (
         <div className="numberInput">
             <form onSubmit={handleSubmit}>
-                <input type="number" value={inputNumber} onChange={(e) => setInputNumber(e.target.value)} />
+                <input type="number" value={inputNumber} onChange={(e) => setInputNumber(+e.target.value)} />
                 <button disabled={isOutOfRange} className={isOutOfRange && 'disabled'}>
                     GET COUNTRIES
                 </button>
             </form>
-            {isOutOfRange && <p>Input value should be number in range 5..20</p>}
+            {isOutOfRange && <p>Input value should be inteager number in range 5..20</p>}
         </div>
     )
 }
